@@ -13,7 +13,6 @@ import plotly.graph_objects as go
 import plotly.express as px
 import pandas as pd
 from pandas import DataFrame
-import numpy as np
 from dash import dash_table
 import functions.parseFilesWeb as parseFiles
 import functions.fitCumulant2ndOrderDash as fitCumulant2ndOrder
