@@ -1,23 +1,25 @@
 pip install import dash
-from dash.dependencies import Input, Output, State
-from dash import html
-from dash import dcc
-import dash_bootstrap_components as dbc
-import dash_daq as daq
-from dash.html.Div import Div
-from dash.exceptions import PreventUpdate
-import numpy as np
-from numpy import nan
-from pandas.io.formats import style
+pip install import numpy
 import plotly.graph_objects as go
 import plotly.express as px
 import pandas as pd
-from pandas import DataFrame
-from dash import dash_table
+import dash_bootstrap_components as dbc
+import dash_daq as daq
+
 import functions.parseFilesWeb as parseFiles
 import functions.fitCumulant2ndOrderDash as fitCumulant2ndOrder
 import functions.fitNNLS as fit_NNLS
 import functions.internalSettingsWeb as internalSettings
+
+from dash.dependencies import Input, Output, State
+from dash import html
+from dash import dcc
+from dash.html.Div import Div
+from dash.exceptions import PreventUpdate
+from numpy import nan
+from pandas.io.formats import style
+from pandas import DataFrame
+from dash import dash_table
 #import orjson
 
 #external_stylesheets = ["https://codepen.io/chriddyp/pen/bWLwgP.css"]#loading of the external stylesheet for webpage (CSS)
