@@ -1,5 +1,5 @@
-pip install import dash
-pip install import numpy
+import dash
+import numpy
 import plotly.graph_objects as go
 import plotly.express as px
 import pandas as pd
