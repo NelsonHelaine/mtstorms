@@ -17,3 +17,4 @@ plotly==5.10.0
 tenacity==8.0.1
 Werkzeug==2.2.2
 zipp==3.8.1
+dash_daq==1.0.9
