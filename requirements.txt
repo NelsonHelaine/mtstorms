@@ -9,7 +9,6 @@ Brotli==1.0.9
 brotlipy==0.7.0
 certifi==2021.10.8
 click==8.0.3
-clyent==1.2.2
 comtypes==1.1.10
 cytoolz==0.11.0
 daal4py==2021.4.0
