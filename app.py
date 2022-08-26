@@ -12,6 +12,7 @@ import functions.fitCumulant2ndOrderDash as fitCumulant2ndOrder
 import functions.fitNNLS as fit_NNLS
 import functions.internalSettingsWeb as internalSettings
 
+
 from dash.dependencies import Input, Output, State
 from dash import html
 from dash import dcc
@@ -21,6 +22,7 @@ from numpy import nan
 from pandas.io.formats import style
 from pandas import DataFrame
 from dash import dash_table
+from whitenoise import WhiteNoise
 #import orjson
 
 #external_stylesheets = ["https://codepen.io/chriddyp/pen/bWLwgP.css"]#loading of the external stylesheet for webpage (CSS)
@@ -33,7 +35,7 @@ app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP],
     meta_tags=[{'name': 'viewport', 'content': 'width=device-width, initial-scale=1'}])
 
 server = app.server
-server.wsgi_app = whitenoise(server.wsgi_app, root='assets/')
+server.wsgi_app = WhiteNoise(server.wsgi_app, root='assets/')
 #app = dash.Dash(__name__, external_stylesheets=external_stylesheets)#app definition with the external stylesheet
 #variable initialization:
 #columns_data = ["File name", "Record", "Sample", "T (°C)", "Viscos.", "Angle (°)", "RI", "Time", "Gamma"]#names of the dataTable columns
