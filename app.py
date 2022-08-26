@@ -32,6 +32,7 @@ app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP],
     meta_tags=[{'name': 'viewport', 'content': 'width=device-width, initial-scale=1'}])
 
 server = app.server
+server.wsgi_app = WhiteNoise(server.wsgi_app, root='assets/')
 #app = dash.Dash(__name__, external_stylesheets=external_stylesheets)#app definition with the external stylesheet
 #variable initialization:
 #columns_data = ["File name", "Record", "Sample", "T (°C)", "Viscos.", "Angle (°)", "RI", "Time", "Gamma"]#names of the dataTable columns
