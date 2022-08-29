@@ -375,7 +375,7 @@ content = html.Div(
                             },
                         multiple=True
                         )],style={'display':'inline-block','width':'3.52vw','marginRight':'1%'}),
-                    html.Button(id='data_seldes_all',children=[html.Img(src=app.get_asset_url('{"Data_seldes.png" %}'),style={'width':'100%'})],
+                    html.Button(id='data_seldes_all',children=[html.Img(src=app.get_asset_url('Data_seldes.svg'),style={'width':'100%'})],
                                         style={'verticalAlign':'middle',
                                                 'borderStyle':'solid',
                                                 'borderWidth':'1px',
