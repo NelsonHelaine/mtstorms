@@ -31,7 +31,7 @@ meta_tags=[{'name': 'viewport', 'content': 'width=device-width, initial-scale=1'
 
 
 internalSettings.init()#initialization of various variables
-app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP],
+app = dash.Dash(__name__,external_stylesheets=[dbc.themes.BOOTSTRAP],
     meta_tags=[{'name': 'viewport', 'content': 'width=device-width, initial-scale=1'}])
 
 server = app.server
