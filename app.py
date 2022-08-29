@@ -353,7 +353,7 @@ content = html.Div(
                     html.Div([
                     dcc.Upload(
                         id="upload-data",#upload button id
-                        children=html.Button(children=[html.Img(src=app.get_asset_url('Data_add.svg'),style={'width':'100%'})],
+                        children=html.Button(children=[html.Img(src=app.get_static_url('Data_add.svg'),style={'width':'100%'})],
                                             style={'verticalAlign':'middle','borderStyle':'solid','borderWidth':'1px'}),#drag and drop part
                         style={#button styling
                             #"width": "100%",
