@@ -79,7 +79,7 @@ def fit(data,rows_selected):
         internalSettings.fitMainContainer[internalSettings.keyCountFits].append(residues)
         #internalSettings.distributionMainContainer[internalSettings.keyCountFits].append(variance)
         internalSettings.distributionMainContainer[internalSettings.keyCountFits].append(distribution)
-
+        print(internalSettings.distributionMainContainer)
 
         #print(fitDicttoAdd)
         frac_uncertainties=(uncertainties/popt1)
