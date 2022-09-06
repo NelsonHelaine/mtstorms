@@ -116,8 +116,8 @@ def openDataFile(contents, filename, date):
                         io.StringIO(decoded.decode("latin1")), header=None, sep="\t",names=l_col)
 
 
-
-        if df_data.iloc[0, 0] == "Record":  # pattern for malvern files
+        print(df_data)
+        if (df_data.iloc[0, 0] == ("Record")):  # pattern for malvern files
             fileType="malvern"
             print(fileType)
             df_data = df_data.replace(",", ".", regex=True)  # replace , by . in order to avoid storage problems
@@ -170,6 +170,60 @@ def openDataFile(contents, filename, date):
                 internalSettings.dataMainContainer[internalSettings.keyCount].append(
                     pd.to_numeric(df_data.iloc[j, idxCorrelDataMalv]).to_numpy()
                 )
+
+
+        if (df_data.iloc[0, 0] == ("Record Number")):  # pattern for malvern files
+            fileType="malvern"
+            print(fileType)
+            df_data = df_data.replace(",", ".", regex=True)  # replace , by . in order to avoid storage problems
+            # import of all the specs indexes to access them easily in the structure
+            idxSampleNameMalv = getIndexes(df_data, "Sample Name")
+            idxRecordMalv = getIndexes(df_data, "Record Number")
+            idxTypeMalv = getIndexes(df_data, "Type")
+            idxMeasurementDateMalv = getIndexes(df_data, "Measurement Date and Time")
+            idxTempMalv = getIndexes(df_data, "Temperature (°C)")
+            idxDerivCountRatesMalv = getIndexes(df_data, "Derived Count Rate (kcps)")
+            idxZaveMalv = getIndexes(df_data, "Z-Average (d.nm)")
+            #idxIntensityMeanMalv = getIndexes(df_data, "Intensity Mean (d.nm)")
+            #idxNumberMeanMalv = getIndexes(df_data, "Number Mean (d.nm)")
+            idxPdIMalv = getIndexes(df_data, "PdI")
+            #idxAttenuatorMalv = getIndexes(df_data, "Attenuator")
+            idxCorrelDataMalv = getIndexesMultColCorrelData(df_data)
+            idxCorrelDelayTimesMalv = getIndexesMultColCorrelDelayTimes(df_data)
+            idxSizesMalv = getIndexesMultColSizes(df_data)
+            idxIntensitiesMalv = getIndexesMultColIntensities(df_data)
+            idxNumbersMalv = getIndexesMultColNumbers(df_data)
+            idxSizePeakMalv = getIndexesMultColSizePeak(df_data)
+            idxPeakArea = getIndexesMultColPeakArea(df_data)
+            #idxScatAngleMalv = getIndexes(df_data, "Scattering Angle (°)")
+            #idxViscosityMalv = getIndexes(df_data, "Viscosity (cP)")
+            #idxDispersantRMalv = getIndexes(df_data, "Dispersant RI")
+            #idxAppliedRegulariserMalv = getIndexes(df_data, "Applied Regulariser")
+            for j in range(1, len(df_data)):  # loop on all the experiments of the files
+                # adding the different specs to checkboxtreeview widget
+        
+                # adding the data to the main data container
+                internalSettings.keyCount += 1
+                internalSettings.dataMainContainer[internalSettings.keyCount].append(os.path.basename(filename))
+                internalSettings.dataMainContainer[internalSettings.keyCount].append(df_data.iloc[j, idxRecordMalv[1]])
+                internalSettings.dataMainContainer[internalSettings.keyCount].append(
+                    df_data.iloc[j, idxSampleNameMalv[1]]
+                )
+                internalSettings.dataMainContainer[internalSettings.keyCount].append(df_data.iloc[j, idxTempMalv[1]])
+                internalSettings.dataMainContainer[internalSettings.keyCount].append(1)
+                internalSettings.dataMainContainer[internalSettings.keyCount].append(173.15)
+                internalSettings.dataMainContainer[internalSettings.keyCount].append(1.33)
+                internalSettings.dataMainContainer[internalSettings.keyCount].append(
+                    pd.to_numeric(df_data.iloc[j, idxCorrelDelayTimesMalv]).to_numpy()
+                )
+                internalSettings.dataMainContainer[internalSettings.keyCount].append(
+                    pd.to_numeric(df_data.iloc[j, idxCorrelDataMalv]).to_numpy()
+                )
+
+
+
+
+
 
         if (
             df_data.iloc[0, 0] == "Name"
@@ -245,7 +299,7 @@ def openDataFile(contents, filename, date):
 
         internalSettings.keyCount += 1
         internalSettings.dataMainContainer[internalSettings.keyCount].append(os.path.basename(filename))
-        internalSettings.dataMainContainer[internalSettings.keyCount].append(i + 1)
+        #internalSettings.dataMainContainer[internalSettings.keyCount].append(i + 1)
         internalSettings.dataMainContainer[internalSettings.keyCount].append("")
         internalSettings.dataMainContainer[internalSettings.keyCount].append("")
         internalSettings.dataMainContainer[internalSettings.keyCount].append("")
@@ -340,7 +394,7 @@ def openDataFile(contents, filename, date):
             internalSettings.dataMainContainer[internalSettings.keyCount].append(
                 pd.to_numeric(df_data.iloc[idxsDataCorrel[0][:], 1]).to_numpy()
             )
-
+    return(pd.DataFrame(internalSettings.dataMainContainer).T)        
     return(pd.DataFrame(internalSettings.dataMainContainer).T)
     # #print(df_data)
     # if (fileType=='malvern'):

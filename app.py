@@ -736,6 +736,7 @@ def update_output(n_clicks,list_of_contents, list_of_names, list_of_dates):
                     dataTemp.columns=columns_data
                     dataTemp=dataTemp.to_dict("records")
                     dicData=dicData+dataTemp
+                    internalSettings.dataMainContainer[internalSettings.keyCount].append(i + 1)
                 try:
                     print("upload")
                     return dicData
